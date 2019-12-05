@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 // import axios from 'axios';
 
 export default class Form extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.state = {
-            name: '',
+            product_name: '',
             price: 0,
-            img_url: ''
+            image_url: ''
         }
     }
 
@@ -24,15 +24,15 @@ export default class Form extends Component {
         console.log('price hit')
     }
 
-    handleSubmit() {
-
+    handleAdd() {
+      
     }
-
+    
     cancelInputs() {
         this.setState({
-            name: '',
+            product_name: '',
             price: 0,
-            imgurl: ''
+            image_url: ''
         })
     }
 
@@ -40,6 +40,7 @@ export default class Form extends Component {
         return(
             <div className='Form'>
                 <h1>Form</h1>
+                {this.state.image_url}
                 <p>Image URL:</p>
                 <input type="text" name="" id=""/>
                 <br/>
@@ -49,8 +50,9 @@ export default class Form extends Component {
                 <p>Price:</p>
                 <input type="text" onChange={this.handlePriceInput}/>
                 <br/>
-                <button onCLick={this.cancelInputs}>Cancel</button>
-                <button onClick={this.handleSubmit}>Add to Inventory</button>
+                <br/>
+                <button>Cancel</button>
+                <button>Add to Inventory</button>
             </div>
         )
     }

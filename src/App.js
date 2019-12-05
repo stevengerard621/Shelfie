@@ -10,9 +10,10 @@ class App extends React.Component{
     super()
 
     this.state = {
-      products: ['','','','']
+      products: []
     }
     this.getProducts = this.getProducts.bind(this);
+    this.addProduct =  this.addProduct.bind(this);
   }
 
   componentDidMount(){
@@ -27,12 +28,21 @@ class App extends React.Component{
     })
   }
 
+  addProduct = (body) => {
+    axios.post('/api/products', body).then(res => {
+      this.setState({
+        products: res.data
+      })
+    })
+  }
+
   render(){
+    console.log(this.state.products)
     return (
       <div className="App">
-        <Dashboard products={this.state.products}/>
-        <Form />
         <Header />
+        <Form />
+        <Dashboard products={this.state.products}/>
       </div>
     );
   }

@@ -8,6 +8,7 @@ const express = require("express"),
 const { SERVER_PORT, CONNECTION_STRING } = process.env;
 
 app.get('/api/products', controller.getProducts);
+app.post('/api/products', controller.create)
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db)
